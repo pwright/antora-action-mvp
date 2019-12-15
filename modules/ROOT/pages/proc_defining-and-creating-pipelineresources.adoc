@@ -1,0 +1,68 @@
+// Ths module is included in the following assembly:
+//
+// assembly_using-openshift-pipelines.adoc
+
+[id="defining-and-creating-pipelineresources_{context}"]
+= Defining and creating pipeline resources
+
+`PipelineResources` are artifacts that are used as inputs to a `Task` and can be output by a `Task`.
+
+[discrete]
+=== Procedure
+
+After you create `Task` s, create `PipelineResources` that contain the specifics of the Git repository and the image registry to be used in the `Pipeline` during execution as follows:
+
+. Create a `PipelineResource` YAML file with a `PipelineResource` that defines the Git repository and reference for the PetClinic application as follows:
++
+----
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: petclinic-git
+spec:
+  type: git
+  params:
+  - name: url
+    value: https://github.com/spring-projects/spring-petclinic
+----
+
+. Add another `PipelineResource`, which defines the OpenShift internal registry to which you want to push the PetClinic image, to the YAML file as shown below, and save it.
++
+----
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: petclinic-image
+spec:
+  type: image
+  params:
+  - name: url
+    value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/spring-petclinic
+----
+
+. Create the above pipeline resources as follows:
++
+----
+$ oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/pipeline/02-resources.yaml
+----
+
+. Verify the resources created as follows:
++
+----
+$ tkn resource ls
+
+NAME              TYPE    DETAILS
+petclinic-git     git     url: https://github.com/spring-projects/spring-petclinic
+petclinic-image   image   url: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/spring-petclinic
+----
+
+
+
+////
+[discrete]
+== Additional resources
+
+* A bulleted list of links to other material closely related to the contents of the procedure module.
+* For more details on writing procedure modules, see the link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
+* Use a consistent system for file names, IDs, and titles. For tips, see _Anchor Names and File Names_ in link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
+////
