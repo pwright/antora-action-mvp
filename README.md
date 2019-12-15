@@ -1,5 +1,3 @@
-## Welcome to "Hello World" with GitHub Actions
+# Antora demo
 
-This course will walk you through writing your first action and using it with a workflow file. 
-
-**Ready to get started? Navigate to the first issue.**
+pushing to gh-pages using antora and github actions
