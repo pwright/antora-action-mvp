@@ -1,6 +1,6 @@
 name: docs
-title: OpenShift Pipelines
-version: 0.7
+title: Antora GitHub Actions
+version: 0.1
 nav:
   - modules/ROOT/nav.adoc
 
