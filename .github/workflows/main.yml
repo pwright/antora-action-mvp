@@ -10,6 +10,9 @@ jobs:
         uses: ./action-a
         env:
           MY_NAME: "Red Hat"
+      - name: '[DEPLOY] .nojekyll'
+        run: touch build/.nojekyll
+
       - name: '[DEPLOY] to GH-PAGES'
         uses: JamesIves/github-pages-deploy-action@master
         env:
