@@ -1,6 +1,6 @@
 site:
-  title: OpenShift Pipelines
-  url: https://openshift.github.io/pipelines-docs/
+  title: Antora Actions
+  url: https://pwright.github.io/antora-actions
   start_page: docs::index
 content:
   sources:
