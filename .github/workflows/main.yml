@@ -11,7 +11,7 @@ jobs:
         env:
           MY_NAME: "Red Hat"
       - name: '[DEPLOY] .nojekyll'
-        run: touch build/.nojekyll
+        run: touch build/site/.nojekyll
 
       - name: '[DEPLOY] to GH-PAGES'
         uses: JamesIves/github-pages-deploy-action@master
